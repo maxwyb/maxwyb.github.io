@@ -57,7 +57,7 @@ func saveActivities(holder who: String, description what: String, date when: Str
 }
 ```
 
-Fetch all objects of entity `Activity` from Core Data to memory:  
+Fetch all objects of entity `Activity` from Core Data to memory (to the `NSManagedObject` array):  
 
 ```swift
 func fetchActivites() {
@@ -111,4 +111,8 @@ override func tableView(tableView: UITableView, commitEditingStyle editingStyle:
 }
 ```
 
+### Future  
 I am continue exploring how to edit an existing object in Core Data. The editing should be both reflected in the memory-based array of `NSManagedObject` and Core Data database.  
+
+I will end this post with a graph I found pretty useful regarding functions of View Controllers.
+![View Controller Graph](/assets/IGHA7.jpg "View Controller Graph")
