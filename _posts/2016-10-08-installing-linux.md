@@ -18,7 +18,8 @@ So, Security Boot is a realitively new OS security strategy used since the Windo
 ### MacBook Pro: Dual Boot OS X El Capitan and Ubuntu
 Soon we realized that dual booting Linux is not as difficult as I thought before on a Mac; we were trying it on a Retina MacBook Pro 13''. The first step would be to **install *boot loader* `rEFInd` before anything else**, which does the job of `grub` on a dual-booting PC. `rEFInd` works well on Macs for even triple-booting macOS, Linux and Windows.  
 
-Below is an illustration for a PC or a Mac's booting process after being powered on. The boot loader was loaded first after hardware are ready; then it will prompt user to choose the OS to boot, and gives control to that kernel to load.
+Below is an illustration for a PC or a Mac's booting process after being powered on. The boot loader was loaded first after hardware are ready; then it will prompt user to choose the OS to boot, and gives control to that kernel to load.  
+
 ```
                                                        |--------|
                                                   ---->| macOS  |
@@ -32,6 +33,7 @@ Below is an illustration for a PC or a Mac's booting process after being powered
                                                        | Windows |
                                                        |---------|
 ```
+
 Then comes the common installation routine, after partitoning using the built-in `Disk Utility`. Keep in mind that we haven't choose `rEFInd` to be the first boot option yet, so there would be no booting menu with both macOS and Linux when turning on the computer. The default *boot manager* by Apple (the menu triggered by holding `Option` after the startup *ping* sound) will not recognize the Ubuntu partition. So now we booted into the Ubuntu installation drive again, and set up the `rEFInd` to be the first boot option by `efibootmgr`. Note that there may be two options of "Mac OS X", where one was really the boot loader we just installed.
 
 Up to now everything are good, so what's next? How about **triple-boot macOS, Ubuntu and Windows**? I've tried that last year; though didn't work out finally, the primary reason was clear: **The three OSs must be consistent on the boot scheme: BIOS or UEFI.** macOS and Ubuntu are all relying on UEFI as the main option for a long time, and Microsoft came down to support it since Windows 7/8. A little background here: years ago engineers at Apple invented a somewhat complex and annoying solution called [*Hybrid MBR*](http://www.rodsbooks.com/gdisk/hybrid.html), for users to install Windows through *Boot Camp* when it was not supporting UEFI boot yet. Basically it emulates a MBR partition table specifically for Windows, so Windows installation (and later the Windows OS itself) will be tricked to recognize the hard drive as being MBR partitioned while it is actually using GUID.  
