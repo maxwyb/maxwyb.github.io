@@ -47,8 +47,8 @@ These were two old Acer 9'' laptops and a HP Compaq 15'' with the first generati
 
 Note that a *file sharing* partition may be of use here; it can be in `NTFS` format which can be read and write by both Windows and Linux. One Acer with 40 Gigabytes of hard drive was clean installed a 32-bit Ubuntu with one partition mounted to `/`; the Acer with 160 Gig and HP with 500 Gig were dual booting with Windows XP and Windows 7.
 
-Two things to delve deeper in the future:
-1. Swap. I didn't give an extra partition mounted to `/swap` for memory swap when installing the OS, so it will go to a swap file in the main partition if swap space is needed. That may possibly cause lose of performance on low-memory machines.
+Two things to delve deeper in the future:  
+1. Swap. I didn't give an extra partition mounted to `/swap` for memory swap when installing the OS, so it will go to a swap file in the main partition if swap space is needed. That may possibly cause lose of performance on low-memory machines.  
 2. *[Logical Volume Manager(https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux))]*: we can choose to use that to manage partitions before installing Ubuntu, which is claimed to provide easier and faster partition managements in the future. Basically it is an extra layer above the physical partitions, and somehow maps to the position of each partition.
 
 ### HP: Problems with Many Partitions in MBR
