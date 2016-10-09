@@ -20,7 +20,7 @@ Soon we realized that dual booting Linux is not as difficult as I thought before
 
 Below is an illustration for a PC or a Mac's booting process after being powered on. The boot loader was loaded first after hardware are ready; then it will prompt user to choose the OS to boot, and gives control to that kernel to load.  
 
-```
+```bash
                                                        |--------|
                                                   ---->| macOS  |
                                                        |--------|
