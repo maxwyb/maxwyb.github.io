@@ -24,11 +24,11 @@ The following files are needed for symbolication:
 ```
 
 ### A Note on UUIDs
-By comparing the UUID in the crash log with that of the app executable and debug symbol, we make sure they are corresponding to each other: different archives built with even the same source code would have different UUIDs. *Technically* symbolication can only performed when the UUIDs of these three things are the same.  
+By comparing the UUID in the crash log with that of the app executable and debug symbol, we make sure they are corresponding to each other: different archives built with even the same source code would have different UUIDs. *Technically* symbolication can only be performed when the UUIDs of these three things are the same.  
 
 We can check the UUIDs by `dwarfdump --uuid` command on macOS. *DWARF* (debugging with Attributed Record formats) is a debugging file format used by many compilers and debuggers to support source-level debugging, according to [IBM](https://www.ibm.com/developerworks/aix/library/au-dwarf-debug-format/). See the Apple's webpage attached below.  
 
-Interestingly, **the binary image's UUID in Apple's crash logs does not match with the UUID of our local archive executable and dSYM**, but we are sure the executable used here is the one submitted to the App Store. The UUID of `.app` executable and that of the dSYM debug symbols matches together, as seen below. However, somehow the script still managed to symbolicate the crash logs, and the result looks correct. Yet this might be the reason that we are getting only partially symbolicated logs as discussed below.
+Interestingly, **the binary image's UUID in Apple's crash logs does not match with the UUID of our local archive executable and dSYM**, but we are sure the executable used here is the one submitted to the App Store. The UUID of the `.app` executable and that of the dSYM debug symbols match together, as seen below. However, somehow the script still managed to symbolicate the crash logs, and the result looks correct. Yet this might be the reason that we are getting only partially symbolicated logs as discussed below.
 
 ```bash
 $ dwarfdump --uuid MyApp-1.04-Build15.app/MyApp
