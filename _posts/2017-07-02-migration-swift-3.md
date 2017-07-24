@@ -4,6 +4,8 @@ title:  "The Grand Migration from Swift 2.2 to Swift 3"
 date:   2017-07-02 10:03:00 -0700
 categories: iOS, Swift
 ---
+***Update 07/23/2017** on Swift 3 optional value handling: shoutout to Austin giving a more elegant solution on `guard` statements!*
+
 We haven't got the chance last year to do this administration-side work due to rapid development, and has been suffering from a major problem: Swift 2 iOS apps can only run on Xcode 7 which is not officially compatible with macOS Sierra or above (the most disturbing thing being the Instruments profiling tool will always crash at launch). Considering Swift 4 is launching officially this fall, it's perfect time now to upgrade our 2.7k+ lines of code first to Swift 3. But making changes to *everywhere* in the entire codebase sounds daunting; you probably don't realize that one character modification to somewhere is breaking other seemingly unrelated components far apart. Also, it's hard to provide a good time estimate on the migration, since Xcode may prompt more syntax errors after you fix some. After getting through the entire process in about 5 days (2 days trial-and-errors and 3 days doing real work), here are the steps I followed and some experiences that might be helpful.
 
 ## Test CocoaPods frameworks in a separate project
@@ -79,12 +81,13 @@ if let anotherLabel = anotherLabel {
 	print(anotherLabel)  // "Hello Swift 3!"
 }
 
+// UPDATED with Austin's suggestion
 // anther syntax if you're pretty sure the value exists
-guard (anotherLabel != nil) else {
+guard let anotherLabelUnwrapped = anotherLabel else {
 	print ("unexpected value")
 	return  // from current function
 }
-print(anotherLabel!)  // "Hello Swift 3!"
+print(anotherLabelUnwrapped)  // "Hello Swift 3!"; we don't need to force unwrap here
 ```
 
 Other examples of strict downcasting and *the Grand Renaming* of function names:
