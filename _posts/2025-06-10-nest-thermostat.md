@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Nest Thermostat E fails to connect to the Nest app (TD008 4060)"
-date:   2025-06-10 18:00:00 -0700
+date:   2025-06-10 12:00:00 -0700
 categories: Nest iOS Google IoT
 ---
 
